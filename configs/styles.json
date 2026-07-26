@@ -1,0 +1,30 @@
+{
+  "description": "Example style sources used for stylized Neural Subdivision experiments. Mesh files are not committed; place local OBJ files at these paths or edit the paths.",
+  "training": {
+    "target_faces": 500,
+    "num_subdivisions": 2,
+    "num_train": 200,
+    "num_valid": 10,
+    "epochs": 700,
+    "learning_rate": 0.002
+  },
+  "styles": {
+    "bunny": {
+      "source_obj": "data/style_sources/bunny.obj",
+      "description": "smooth organic style"
+    },
+    "balloon": {
+      "source_obj": "data/style_sources/balloon.obj",
+      "description": "smooth sphere-like style"
+    },
+    "textured_earth": {
+      "source_obj": "data/style_sources/textured_earth.obj",
+      "description": "rough bumpy style"
+    },
+    "gear_16t": {
+      "source_obj": "data/style_sources/gear_16t.obj",
+      "description": "mechanical sharp-edged style"
+    }
+  }
+}
+
