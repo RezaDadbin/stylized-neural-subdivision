@@ -1,0 +1,18 @@
+{
+  "description": "Example test-object names from the visual experiment. Mesh files are not committed; place local OBJ files at these paths or edit the paths.",
+  "test_objects": {
+    "egg_chair": "data/test_objects/egg_chair.obj",
+    "dragon": "data/test_objects/dragon.obj",
+    "sphere": "data/test_objects/sphere.obj",
+    "elephant": "data/test_objects/elephant.obj",
+    "fish": "data/test_objects/fish.obj",
+    "bunny": "data/test_objects/bunny.obj",
+    "gear16": "data/test_objects/gear16.obj",
+    "balloon": "data/test_objects/balloon.obj",
+    "crane_hook": "data/test_objects/crane_hook.obj",
+    "unicorn_head": "data/test_objects/unicorn_head.obj",
+    "rock_frog": "data/test_objects/rock_frog.obj",
+    "brain_slug": "data/test_objects/brain_slug.obj"
+  }
+}
+
