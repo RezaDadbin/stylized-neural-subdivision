@@ -1,7 +1,7 @@
 # Stylized Neural Subdivision Experiments
 
-This repository is a cleaned, GitHub-ready code package for my stylized Neural Subdivision
-experiments.
+Reproduction and experimentation with the released Neural Subdivision implementation,
+organized around training separate models on different source meshes and comparing their outputs.
 
 The goal is to follow the released Neural Subdivision implementation closely, train several
 independent models on different style sources, and test the same coarse input object with each
@@ -53,9 +53,15 @@ Generated datasets, PKLs, checkpoints, and rendered outputs are intentionally ex
 
 This package is based on:
 
+- [Neural Subdivision](https://www.dgp.toronto.edu/projects/neural-subdivision/) (SIGGRAPH 2020),
+  by Hsueh-Ti Derek Liu, Vladimir G. Kim, Siddhartha Chaudhuri, Noam Aigerman, and Alec Jacobson.
 - Neural Subdivision: <https://github.com/HTDerekLiu/neuralSubdiv>
 - Surface multigrid / random subdivision remeshing generator:
   <https://github.com/HTDerekLiu/surface_multigrid_code>
+
+The original method and core model implementation are the work of the upstream authors.
+This repository contributes experiment packaging, checkpoint/resume tooling, and the generator
+compatibility changes described below. Upstream license files remain under `external/`.
 
 The copied C++ generator includes one practical fix: it normalizes the input mesh to a unit bounding
 box before remeshing, matching the MATLAB `normalizeUnitBox.m` behavior from the Neural Subdivision
@@ -63,14 +69,20 @@ data-generation path. See `docs/normalization_fix.md` and `docs/changes_from_ups
 
 ## Setup
 
-Install Python dependencies:
+Use a Python 3.11 virtual environment. Data generation also requires CMake and a C++ compiler;
+the supplied launchers require Bash. From the repository root:
 
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-Install PyTorch separately for your machine from the official PyTorch instructions. CUDA, CPU, and
-Apple Silicon/MPS builds require different install commands.
+Install PyTorch separately using the [official installation instructions](https://pytorch.org/get-started/locally/)
+for your operating system and device; it is not listed in this repository's `requirements.txt`.
+On Windows, activate the environment with `.venv\Scripts\activate` and use a Bash-compatible environment
+for the shell launchers.
 
 Build the C++ generator:
 
@@ -128,6 +140,8 @@ external/neuralSubdiv/jobs/net_style_bunny/
 
 ## Notes
 
-The repository does not include raw datasets or trained checkpoints. I keep those out of Git because
-they are large generated artifacts. The codebase and generated experiment artifacts can be shared
-separately when needed.
+The repository does not include source meshes, generated datasets, trained checkpoints, or rendered
+results. Obtain source meshes under their original redistribution terms and keep generated artifacts
+outside the tracked source tree. Record the source meshes, dataset splits, seed, package versions,
+device, configuration, and repository commit when comparing runs. The examples describe an
+experimental workflow; they do not establish a quantitative performance improvement.
